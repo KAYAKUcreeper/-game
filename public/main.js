@@ -1,52 +1,25 @@
-document.getElementById("send-btn").addEventListener("click", sendMessage);
-document.getElementById("user-input").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") sendMessage();
+document.getElementById("sendBtn").addEventListener("click", async () => {
+    const word = document.getElementById("wordInput").value;
+    if (!word) return;
+
+    addLog("あなた", word);
+
+    const res = await fetch("/api/shiritori", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ word })
+    });
+
+    const data = await res.json();
+    addLog("AI", data.ai_word);
+
+    document.getElementById("wordInput").value = "";
 });
 
-function sendMessage() {
-    const input = document.getElementById("user-input");
-    const text = input.value.trim();
-    if (text === "") return;
-
-    // ログに追加
-    addLog("あなた", text);
-
-    // 左の吹き出しに表示
-    document.getElementById("player-bubble").textContent = text;
-
-    // AIの返答（仮のしりとりロジック）
-    const aiWord = getAIWord(text);
-    addLog("AI", aiWord);
-
-    // 右の吹き出しに表示
-    document.getElementById("ai-bubble").textContent = aiWord;
-
-    input.value = "";
-}
-
-function addLog(sender, message) {
-    const log = document.getElementById("chat-log");
-
-    const entry = document.createElement("div");
-    entry.innerHTML = `<strong>${sender}:</strong> ${message}`;
-
-    log.appendChild(entry);
-    log.scrollTop = log.scrollHeight;
-}
-
-// 仮のAIしりとりロジック（適当）
-function getAIWord(userWord) {
-    const lastChar = userWord.slice(-1);
-
-    const dictionary = {
-        "り": "りんご",
-        "ご": "ごりら",
-        "ら": "らっぱ",
-        "ぱ": "パンダ",
-        "だ": "だるま",
-        "ま": "まくら",
-        "ら": "ラーメン"
-    };
-
-    return dictionary[lastChar] || "？？？";
+function addLog(speaker, text) {
+    const log = document.getElementById("log");
+    const div = document.createElement("div");
+    div.className = "msg";
+    div.innerHTML = `<strong>${speaker}:</strong> ${text}`;
+    log.appendChild(div);
 }

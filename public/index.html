@@ -1,38 +1,19 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>しりとりバトル</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>AIしりとり</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="game-container">
+    <h1>AIとしりとり</h1>
 
-    <!-- 左の棒人間（自分） -->
-    <div class="player-area">
-        <div class="speech-bubble" id="player-bubble">...</div>
-        <div class="character-img player"></div>
-    </div>
+    <div id="log"></div>
 
-    <!-- 中央のログエリア -->
-    <div class="center-area">
-        <div id="chat-log" class="chat-log"></div>
+    <input id="wordInput" type="text" placeholder="単語を入力">
+    <button id="sendBtn">送信</button>
 
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="しりとりの言葉を入力...">
-            <button id="send-btn">送信</button>
-        </div>
-    </div>
-
-    <!-- 右の棒人間（AI） -->
-    <div class="ai-area">
-        <div class="speech-bubble" id="ai-bubble">...</div>
-        <div class="character-img ai"></div>
-    </div>
-</div>
-
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="main.js"></script>
 </body>
 </html>
