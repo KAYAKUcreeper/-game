@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #eef2f3;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* ===== 棒人間 ===== */
+.stickman {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head {
+    width: 40px;
+    height: 40px;
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
+.body {
+    width: 3px;
+    height: 60px;
+    background: black;
+}
+
+.arms {
+    width: 60px;
+    height: 3px;
+    background: black;
+}
+
+.legs {
+    width: 3px;
+    height: 40px;
+    background: black;
+    margin-top: 5px;
+}
+
+/* ===== 吹き出し ===== */
+.speech-bubble {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    margin-bottom: 10px;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* ===== 中央エリア ===== */
+.center-area {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.chat-log {
+    flex: 1;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-size: 16px;
+}
+
+#send-btn {
+    padding: 12px 20px;
+    background: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background: #005fcc;
+}
+
+.character-img {
+    width: 150px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.character-img.player {
+    background-image: url("https://4.bp.blogspot.com/-NCcsH9eSgmU/UxbLmpHQ1ZI/AAAAAAAAeBI/3hzTEcRb5uo/s800/pose_doredore_man.png");
+}
+
+.character-img.ai {
+    background-image: url("https://hattatsu-kids.com/wp-content/uploads/2025/04/iromegane_man-367x360.png")
+}
