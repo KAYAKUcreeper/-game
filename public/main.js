@@ -1,25 +1,29 @@
-document.getElementById("sendBtn").addEventListener("click", async () => {
-    const word = document.getElementById("wordInput").value;
-    if (!word) return;
+const log = document.getElementById("log");
+const input = document.getElementById("wordInput");
+const sendBtn = document.getElementById("sendBtn");
 
-    addLog("あなた", word);
+let lastWord = "しりとり";
+addMessage("AI", `最初の単語は「${lastWord}」です`);
 
-    const res = await fetch("/api/shiritori", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ word })
-    });
+sendBtn.addEventListener("click", () => {
+  const word = input.value.trim();
+  if (!word) return;
 
-    const data = await res.json();
-    addLog("AI", data.ai_word);
+  addMessage("あなた", word);
+  input.value = "";
 
-    document.getElementById("wordInput").value = "";
+  // 仮AI：最後の文字 + "から始まる単語（仮）"
+  const lastChar = word[word.length - 1];
+  const aiWord = `${lastChar}から始まる単語（仮）`;
+
+  addMessage("AI", aiWord);
+  lastWord = aiWord;
 });
 
-function addLog(speaker, text) {
-    const log = document.getElementById("log");
-    const div = document.createElement("div");
-    div.className = "msg";
-    div.innerHTML = `<strong>${speaker}:</strong> ${text}`;
-    log.appendChild(div);
+function addMessage(sender, text) {
+  const div = document.createElement("div");
+  div.className = "message " + (sender === "AI" ? "ai" : "player");
+  div.textContent = `${sender}: ${text}`;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
 }
