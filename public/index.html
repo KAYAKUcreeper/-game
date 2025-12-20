@@ -2,16 +2,79 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>AIしりとり</title>
+  <title>しりとりバトル</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>AIしりとり</h1>
 
-  <div id="log"></div>
+  <!-- キャラ選択画面 -->
+  <div id="select-screen">
+    <h2>キャラクターを選んでください</h2>
 
-  <input id="wordInput" type="text" placeholder="単語を入力">
-  <button id="sendBtn">送信</button>
+    <div id="char-list">
+      <div class="char-card" data-char="power3">
+        <img src="https://1.bp.blogspot.com/-xb3JjvmmE0U/UPyIwu_nFJI/AAAAAAAAKw4/EM5Ote8wM4I/s1600/knight.png">
+        <p>三文字剣士（3文字が強い）</p>
+      </div>
+
+      <div class="char-card" data-char="balanced">
+        <img src="https://th.bing.com/th/id/R.4ed0f7eae3af9fe0ab7f362a068ec76a?rik=5YNcWaJRXOXs1A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-f1KvBQ_l6VQ%2fV8jqcEt1wZI%2fAAAAAAAA9fg%2fkhpoh3fO6AQ7EB-4GO8GQZKqqTPt6VgeACLcB%2fs800%2fmahoutsukai_man.png&ehk=b7OtsQMEP668OOr0UtBhM7TRfKz2aOYasua4nRBr3Fk%3d&risl=&pid=ImgRaw&r=0">
+        <p>バランス型（平均的）</p>
+      </div>
+
+      <div class="char-card" data-char="longMaster">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrCYMYEz1gFssedOZrdQ1zjDOJmU5HcVYZtXluc21ZDTp-3Cpt9A5W2kL9MC0tZLRPAjORhIR2bsiIA6i-E6XHxr2zes7Fs27JxqRb9GT2vlud8e0U6pYal8UE9NCP59XCDvF-yJ-stJI/s800/inu_ninja.png">
+        <p>長文マスター（長いほど強い）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- バトル画面（最初は非表示） -->
+  <div id="battle-screen" style="display:none;">
+
+    <h1>🔥 しりとりバトル 🔥</h1>
+
+    <div id="battle-area">
+
+      <div class="side player-side">
+
+        <div class="player-info">
+          <!-- 左：キャラ画像 -->
+          <img src="" class="character player-img">
+
+          <!-- 右：ステータス表 -->
+          <div class="status-box">
+            <h3>ステータス</h3>
+            <ul id="status-list"></ul>
+          </div>
+        </div>
+
+        <div class="hp-container">
+          <div id="player-hp" class="hp-bar"></div>
+        </div>
+
+      </div>
+      <!-- AI側 -->
+      <div class="side ai-side">
+        <h2>AI</h2>
+
+        <div class="hp-container">
+          <div id="ai-hp" class="hp-bar"></div>
+        </div>
+
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7FvJsgp20lFSEWkXzfRKVoEN9YQKBEGYhgVQ3DviccQSzDOZ9saiFX3Eca20y2WeyYJhIupC0DvMbgNXJzACWk9y1TOnz0wlUlE4sNOJC0JEeVi7tTDE-OOiVrRU5hvOLTevQjynzDUPfmLI9Hs8tPivj5Q0BvcWlcKAS3MuWeRw7IdjTbwckqGAytvKv/s997/ai_fusion_human.png" class="character">
+      </div>
+
+    </div>
+
+    <div id="log"></div>
+
+    <div id="input-area">
+      <input id="wordInput" type="text" placeholder="単語を入力">
+      <button id="sendBtn">攻撃！</button>
+    </div>
+
+  </div>
 
   <script src="main.js"></script>
 </body>
