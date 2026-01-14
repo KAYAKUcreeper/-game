@@ -2,26 +2,36 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>しりとり AI 対戦</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>しりとり AI 対戦（UI版）</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-100 p-6">
-  <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-xl font-bold mb-4">しりとり AI 対戦</h1>
+<body>
+  <div class="layout">
 
-    <div id="log" class="space-y-2 mb-4 h-80 overflow-y-auto p-2 bg-gray-50 rounded"></div>
+    <!-- 左：あなた -->
+    <div class="side player-side">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5w726e-ADC9DDJdytCRtdPAHogCk3CLTNF-2N3RglZbTgf_Ad1-2N4rQngxYE8IeDlz0E-fhIJOsOGoisP-O1J66KVTFFs9DJ6b7Vd4YyXGkPWNFpmNn0Kl7IkiPhZcnomsfrnDYur4k/s400/figure_fighting_pose.png" class="character">
+      <div class="name">あなた</div>
+    </div>
 
-    <input id="wordInput"
-           class="border p-2 w-full rounded mb-2"
-           placeholder="単語を入力">
+    <!-- 真ん中：ログ -->
+    <div class="center">
+      <h1>AIしりとり</h1>
+      <div id="log"></div>
 
-    <button id="sendBtn"
-            class="bg-blue-500 text-white px-4 py-2 rounded w-full">
-      送信
-    </button>
+      <input id="wordInput" placeholder="単語を入力">
+      <button id="sendBtn">送信</button>
+    </div>
+
+    <!-- 右：AI -->
+    <div class="side ai-side">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5w726e-ADC9DDJdytCRtdPAHogCk3CLTNF-2N3RglZbTgf_Ad1-2N4rQngxYE8IeDlz0E-fhIJOsOGoisP-O1J66KVTFFs9DJ6b7Vd4YyXGkPWNFpmNn0Kl7IkiPhZcnomsfrnDYur4k/s400/figure_fighting_pose.png" class="character">
+      <div class="name">AI</div>
+    </div>
+
   </div>
 
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

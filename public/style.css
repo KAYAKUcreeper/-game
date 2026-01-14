@@ -1,40 +1,86 @@
 body {
-  background: #f3f4f6;
+  background: #eef1f5;
   font-family: "Helvetica", "Arial", sans-serif;
-  padding: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  max-width: 400px;
-  margin: 0 auto;
-  background: #fff;
+/* 全体レイアウト：左右にキャラ、中央にログ */
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* 左右のキャラ部分 */
+.side {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #dce3eb;
+  border-right: 1px solid #c7ced6;
+}
+
+.ai-side {
+  border-right: none;
+  border-left: 1px solid #c7ced6;
+}
+
+.character {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 中央部分 */
+.center {
+  flex: 1;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 16px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 #log {
-  height: 300px;
+  flex: 1;
   overflow-y: auto;
-  background: #fafafa;
+  background: #ffffff;
   padding: 10px;
   border-radius: 8px;
+  border: 1px solid #d1d5db;
   margin-bottom: 16px;
-  border: 1px solid #e5e7eb;
 }
 
+/* メッセージ（左＝あなた、右＝AI） */
 .message {
-  padding: 8px 10px;
-  background: #e5e7eb;
-  border-radius: 6px;
-  margin-bottom: 8px;
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* あなた（左寄せ） */
+.me {
+  background: #d1e8ff;
+  align-self: flex-start;
+}
+
+/* AI（右寄せ） */
+.ai {
+  background: #ffe4c4;
+  align-self: flex-end;
 }
 
 input {
@@ -55,7 +101,6 @@ button {
   border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover {
