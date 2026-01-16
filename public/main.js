@@ -9,10 +9,22 @@ function sendWord() {
   addLog(word, "me");
   input.value = "";
 
-  // ▼ AIの返答（ダミー）
-  setTimeout(() => {
-    addLog("AIの返答（ダミー）", "ai");
-  }, 500);
+  // ▼ AIの返答をサーバーから取得
+  fetch("/api/shiritori", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ word: word }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      addLog(data.ai_word, "ai");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      addLog("エラーが発生しました。", "ai");
+    });
 }
 
 function addLog(text, type) {
